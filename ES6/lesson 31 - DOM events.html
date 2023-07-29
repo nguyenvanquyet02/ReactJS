@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      const courses = [
+        {
+          id: 15,
+          title: "HTML CSS Pro",
+          slug: "htmlcss",
+          description:
+            "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+          image_url:
+            "https://files.fullstack.edu.vn/f8-prod/courses/15/62f13d2424a47.png",
+        },
+        {
+          id: 19,
+          title: "JavaScript Pro",
+          slug: "javascript-pro",
+          description: "Khóa học JavaScript Pro",
+          image_url:
+            "https://files.fullstack.edu.vn/f8-prod/courses/19/62f13cb607b4b.png",
+        },
+        {
+          id: 20,
+          title: "NextJS Pro",
+          slug: "reactjs-pro",
+          description: "Khóa học NextJS Pro",
+          image_url:
+            "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
+        },
+        {
+          id: 24,
+          title: "NodeJS Pro",
+          slug: "nodejs-pro",
+          description: "NodeJS Pro",
+          image_url:
+            "https://files.fullstack.edu.vn/f8-prod/courses/24/648021c0652c6.png",
+        },
+      ];
+
+      function CourseItem({ data, onClick }) {
+        return (
+          <React.Fragment>
+            <img src={data.image_url} alt="{data.title}" />
+            <h2 onClick={() => onClick(data)}>{data.title}</h2>
+            <h3>{data.slug}</h3>
+            <p>{data.description}</p>
+          </React.Fragment>
+        );
+      }
+
+      function App() {
+        const handleClick = (course) => {
+          console.log(course.title);
+        };
+        return (
+          <React.Fragment>
+            {courses.map((course) => (
+              <CourseItem key={course.id} data={course} onClick={handleClick} />
+            ))}
+          </React.Fragment>
+        );
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ôn tập</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <!-- <h1 class="name">N G U Y E N V A N Q U Y E T</h1> -->
+    <div id="root"></div>
+    <script type="text/babel">
+      //get root elm
+      const container = document.querySelector("#root");
+      const root = ReactDOM.createRoot(container);
+
+      {
+        // console.dir(h1DOM);
+        // console.log(h1React);
+
+        //DOM
+
+        var ulDOM = document.createElement("ul");
+        var liDOM1 = document.createElement("li");
+        liDOM1.innerText = "Javascript";
+        var liDOM2 = document.createElement("li");
+        liDOM2.innerText = "Reactjs";
+        ulDOM.appendChild(liDOM1);
+        ulDOM.appendChild(liDOM2);
+        // document.body.appendChild(ulDOM);
+
+        // console.log(ulReact);
+
+        const divReact = React.createElement(
+          "div",
+          {
+            className: "post-item",
+          },
+          React.createElement("h2", { title: "Học React tại F8" }, "Học React"),
+          React.createElement("p", null, "Học React từ cơ bản đến nâng cao")
+        );
+
+        // using React_DOM used for rendering UI
+        //ReactDOM version 17
+        //   ReactDOM.render(divReact, root);
+        //ReactDOM version 18
+        // root.render(divReact);
+      }
+
+      ////////////JSX - js XML
+      // tao ra bien va gan dc bien voi jsx
+      {
+        const text = "Nguyen Van Quyet";
+        const ul = (
+          <ul className="ulName">
+            <li style={{ color: "red" }}>js</li>
+            <li>{text}</li>
+          </ul>
+        );
+        // root.render(ul);
+
+        // bai tap
+        const courses = [
+          {
+            name: "Javascript",
+            price: 800,
+          },
+          {
+            name: "PHP",
+            price: 900,
+          },
+          {
+            name: "Java",
+            price: 880,
+          },
+          {
+            name: "ReactJS",
+            price: 1200,
+          },
+          {
+            name: "VueJS",
+            price: 1300,
+          },
+          {
+            name: "Python",
+            price: 600,
+          },
+        ];
+        const ulList = (
+          <ul>
+            {courses.map((course) => (
+              <li>
+                {course.name} - {course.price}
+              </li>
+            ))}
+          </ul>
+        );
+
+        root.render(ulList);
+      }
+    </script>
+  </body>
+</html>

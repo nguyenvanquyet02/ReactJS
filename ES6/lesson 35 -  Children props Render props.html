@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      // use rest and spread
+      function Input({ label, ...props }) {
+        return (
+          <React.Fragment>
+            <label>{label}</label>
+            <input {...props} />
+          </React.Fragment>
+        );
+      }
+      function List({ data, children }) {
+        return <ul>{data.map((item) => children(item))}</ul>;
+      }
+      function App() {
+        const cars = ["BMW", "RR", "Ducati"];
+        return (
+          <React.Fragment>
+            <Input label="Your FullName: " placeholder="Enter Your Name" />
+            <List data={cars}>{(item) => <li>{item}</li>}</List>
+          </React.Fragment>
+        );
+      }
+      root.render(<App />);
+    </script>
+  </body>
+</html>
